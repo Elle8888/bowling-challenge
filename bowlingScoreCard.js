@@ -8,16 +8,13 @@ class BowlingScoreCard {
   calculateScore = () => {
     const maxFrames = 10;
 
-    // Loop over each frame
+    // Loop over until the 10th frame
     for (let frame = 0; frame < maxFrames; frame++) {
-      let isTenthFrame = frame === maxFrames - 1;
       let frameScore = 0;
 
-      if (isTenthFrame) {
-        frameScore = this.calculateLastFrameScore();
-      } else {
-        frameScore = this.calculateOtherFrameScore();
-      }
+      frameScore = frame === maxFrames - 1
+      ? this.calculateTenthFrameScore()
+      : this.calculateRegularFrameScore();
 
       this.score += frameScore;
     }
